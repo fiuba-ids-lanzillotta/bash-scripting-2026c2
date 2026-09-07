@@ -21,6 +21,7 @@ while true; do
 
         FECHA="$(date '+%d/%m/%Y %H:%M:%S')"
         NOMBRE_ARCHIVO="$(basename "$archivo")"
+        
         echo "$FECHA - Procesado archivo $NOMBRE_ARCHIVO" >> "$LOG_FILE"
     done
 
