@@ -4,11 +4,10 @@ SALIR=0
 LIMPIAR=0
 
 if [ "${1:-}" = "-d" ]; then
-    SALIR=1
     LIMPIAR=1
 fi
 
-if [ "$LIMPIAR" -ne 1 ] && [ -z "$FILENAME" ]; then
+if [ -z "$FILENAME" ]; then
     echo "Error: debe definir la variable de ambiente FILENAME."
     echo "Ejemplo: export FILENAME=alumnos"
     exit 1
