@@ -1,0 +1,4 @@
+98765 Matias Rojo mrojo@fi.uba.ar 6
+112233 Ana Torres atorres@fi.uba.ar 9
+55443 Bruno Diaz bdiaz@fi.uba.ar 10
+66321 Clara Ramos cramoz@fi.uba.ar 7

@@ -1,0 +1,6 @@
+122332 Juan Lopez jlopez@fi.uba.ar 8
+100998 Pedro Valdez pvaldez@fi.uba.ar 5
+89032 Carla Simone csimone@fi.uba.ar 7
+77542 Franco Lomba flomba@fi.uba.ar 10
+100223 Juana Pola jpola@fi.uba.ar 4
+122435 Lucia Fernandez lfernandez@fi.uba.ar 9
