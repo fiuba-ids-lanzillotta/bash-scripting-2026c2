@@ -1,31 +1,24 @@
 #!/bin/bash
 
+SALIR=0
+LIMPIAR=0
+
 if [ "${1:-}" = "-d" ]; then
-    echo "Eliminando entorno..."
-
-    PID_FILE="$HOME/EPNro1/consolidar.pid"
-    if [ -f "$PID_FILE" ]; then
-        kill "$(cat "$PID_FILE")" 2>/dev/null
-        rm -f "$PID_FILE"
-    fi
-
-    pkill -f "[c]onsolidar.sh" 2>/dev/null
-
-    rm -rf "$HOME/EPNro1"
-
-    echo "Entorno eliminado."
-    exit 0
+    SALIR=1
+    LIMPIAR=1
 fi
 
-if [ -z "$FILENAME" ]; then
+if [ "$LIMPIAR" -ne 1 ] && [ -z "$FILENAME" ]; then
     echo "Error: debe definir la variable de ambiente FILENAME."
     echo "Ejemplo: export FILENAME=alumnos"
     exit 1
 fi
 
-export FILENAME
+if [ -n "$FILENAME" ]; then
+    export FILENAME
+fi
 
-while true; do
+while [ "$SALIR" -eq 0 ]; do
     echo "-----------------------------------"
     echo "Menu Principal"
     echo "1) Crear entorno"
@@ -112,7 +105,7 @@ while true; do
 
         7)
             echo "Saliendo..."
-            exit 0
+            SALIR=1
             ;;
 
         *)
@@ -120,7 +113,27 @@ while true; do
             ;;
     esac
 
+    if [ "$SALIR" -eq 1 ]; then
+        continue
+    fi
+
     echo
     read -p "Presione ENTER para continuar..." || break
     echo
 done
+
+if [ "$LIMPIAR" -eq 1 ]; then
+    echo "Eliminando entorno..."
+
+    PID_FILE="$HOME/EPNro1/consolidar.pid"
+    if [ -f "$PID_FILE" ]; then
+        kill "$(cat "$PID_FILE")" 2>/dev/null
+        rm -f "$PID_FILE"
+    fi
+
+    pkill -f "[c]onsolidar.sh" 2>/dev/null
+
+    rm -rf "$HOME/EPNro1"
+
+    echo "Entorno eliminado."
+fi
